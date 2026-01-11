@@ -1,70 +1,131 @@
-# Getting Started with Create React App
+# Gestion des Comptes - Application Web
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Application web de gestion de comptes bancaires développée avec React, Apollo Client et GraphQL, connectée à un backend microservices.
 
-## Available Scripts
+## 📋 Table des matières
+- [Présentation](#-présentation)
+- [Fonctionnalités](#-fonctionnalités)
+- [Architecture technique](#-architecture-technique)
+- [Installation](#-installation)
+- [Configuration](#-configuration)
+- [Démarrage](#-démarrage)
+- [Structure du projet](#-structure-du-projet)
+- [Endpoints GraphQL](#-endpoints-graphql)
+- [Dépannage](#-dépannage)
+- [Auteurs](#-auteurs)
 
-In the project directory, you can run:
+## 🚀 Présentation
 
-### `npm start`
+Cette application permet la gestion de comptes bancaires à travers une interface web moderne et réactive. Elle communique avec un backend GraphQL pour les opérations CRUD sur les comptes.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Fonctionnalités
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- ✅ Création de nouveaux comptes (courant, épargne, professionnel)
+- ✅ Visualisation de la liste des comptes
+- ✅ Interface utilisateur responsive et moderne
+- ✅ Gestion des états avec React Hooks
+- ✅ Communication GraphQL avec Apollo Client
+- ✅ Messages d'erreur et de confirmation
+- ✅ Mode simulation (sans backend)
 
-### `npm test`
+## 🏗️ Architecture technique
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Stack technique
+- **Frontend**: React 19.2.3
+- **État**: React Hooks (useState, useEffect)
+- **GraphQL Client**: Apollo Client 4.0.11
+- **CSS**: CSS-in-JS avec styles inline
+- **Build Tool**: Create React App
+- **Serveur de développement**: Webpack Dev Server
 
-### `npm run build`
+### Diagramme d'architecture
+```
+┌─────────────────┐     GraphQL     ┌─────────────────┐
+│   Application   │◄────────────────►│   Serveur       │
+│     React       │   HTTP/WebSocket │   GraphQL       │
+│   (Frontend)    │                 │   (Backend)     │
+└─────────────────┘                 └─────────────────┘
+         │                                    │
+         │                                    │
+         ▼                                    ▼
+┌─────────────────┐                 ┌─────────────────┐
+│   Navigateur    │                 │   Base de       │
+│   (Client)      │                 │   Données       │
+└─────────────────┘                 └─────────────────┘
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ⚙️ Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prérequis
+- Node.js (version 16 ou supérieure)
+- npm ou yarn
+- Serveur GraphQL (optionnel pour le mode complet)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Étapes d'installation
 
-### `npm run eject`
+1. **Cloner le projet**
+```bash
+git clone [URL_DU_PROJET]
+cd gestion-comptes-web
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. **Installer les dépendances**
+```bash
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. **Configurer l'environnement**
+```bash
+# Copier le fichier d'environnement
+cp .env.example .env
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🔧 Configuration
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Variables d'environnement
+Créez un fichier `.env` à la racine du projet :
 
-## Learn More
+```env
+REACT_APP_GRAPHQL_URI=http://localhost:4000/graphql
+REACT_APP_API_TIMEOUT=10000
+REACT_APP_ENABLE_MOCK=true
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Configuration Apollo Client
+L'application utilise Apollo Client 4 avec la configuration suivante :
+- **URI GraphQL** : `http://localhost:4000/graphql`
+- **Cache** : InMemoryCache
+- **Link** : HttpLink
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🚀 Démarrage
 
-### Code Splitting
+### Mode développement
+```bash
+# Démarrer l'application
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# L'application sera accessible à :
+# http://localhost:3001
+```
 
-### Analyzing the Bundle Size
+### Mode production
+```bash
+# Construire l'application
+npm run build
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Servir l'application constru
+````
 
-### Making a Progressive Web App
+### Démonstration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<img width="475" height="491" alt="CreatCompte" src="https://github.com/user-attachments/assets/cb830559-3620-4e9b-921b-5de8ddd4987c" />
 
-### Advanced Configuration
+<img width="959" height="506" alt="Create2" src="https://github.com/user-attachments/assets/ec0d6a3d-e724-4dca-962f-9968770e29c8" />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Auteurs
 
-### `npm run build` fails to minify
+Réalisé par : Ettouyjer yasmine.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Encadré par : Mr.Mohamed Mechgar.
