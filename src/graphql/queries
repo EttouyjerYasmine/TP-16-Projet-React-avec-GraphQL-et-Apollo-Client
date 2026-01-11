@@ -1,0 +1,24 @@
+// src/graphql/queries.js
+import { gql } from '@apollo/client';
+
+export const GET_COMPTES = gql`
+  query GetComptes {
+    comptes {
+      id
+      solde
+      dateCreation
+      type
+    }
+  }
+`;
+
+export const GET_COMPTE_BY_ID = gql`
+  query GetCompte($id: ID!) {
+    compte(id: $id) {
+      id
+      solde
+      dateCreation
+      type
+    }
+  }
+`;
